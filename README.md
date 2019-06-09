@@ -14,10 +14,11 @@ $hook['post_controller_constructor'][] = array(
 );
 ------------------------------------------------
 
-Now create a new directory named hooks inside the application folder (i.e. application/hooks) and then create a new file named ssl.php inside the hooks folder (i.e. application/hooks/ssl.php).
+Now create a new directory named hooks inside the application folder (i.e. application/hooks) and then create a new file named ssl_redirection.php inside the hooks folder (i.e. application/hooks/ssl_redirection.php).
 
 Add the following code in the ssl.php file:
 
+<code>
 function ssl_redirection(){
     $CI =& get_instance();
     $class = $CI->router->fetch_class();
@@ -32,4 +33,5 @@ function ssl_redirection(){
         if ($_SERVER['SERVER_PORT'] == 443) redirect($CI->uri->uri_string());
     }
 }
+</code>
 ----------------------------------------------------------

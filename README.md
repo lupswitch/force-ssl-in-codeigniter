@@ -6,12 +6,17 @@ $config['enable_hooks'] = TRUE;
 -----------------------------------------------
 
 Then create a new file named hooks.php inside the config folder (i.e. application/config/hooks.php) and add the following code in it:
-
+<code>
 $hook['post_controller_constructor'][] = array(
+
     'function' => 'ssl_redirection',
+
     'filename' => 'ssl_redirection.php',
+
     'filepath' => 'hooks'
+
 );
+    </code>
 ------------------------------------------------
 
 Now create a new directory named hooks inside the application folder (i.e. application/hooks) and then create a new file named ssl_redirection.php inside the hooks folder (i.e. application/hooks/ssl_redirection.php).
@@ -47,5 +52,3 @@ function ssl_redirection(){
 }
 
 </code>
-;
-------------------------------------------------

@@ -16,22 +16,36 @@ $hook['post_controller_constructor'][] = array(
 
 Now create a new directory named hooks inside the application folder (i.e. application/hooks) and then create a new file named ssl_redirection.php inside the hooks folder (i.e. application/hooks/ssl_redirection.php).
 
-Add the following code in the ssl.php file:
+Add the following code in the ssl_redirection.php file:
 
 <code>
 function ssl_redirection(){
+
     $CI =& get_instance();
+
     $class = $CI->router->fetch_class();
-    $exclude =  array('client');  // add more controller name to exclude ssl.
+
+    $exclude =  array('client');  // add more controller name to exclude ssl cetrificate.
+
     if(!in_array($class,$exclude)) {
-        // redirecting to ssl.
+
+        // redirecting to ssl cetrificate.
+
         $CI->config->config['base_url'] = str_replace('http://', 'https://', $CI->config->config['base_url']);
+
         if ($_SERVER['SERVER_PORT'] != 443) redirect($CI->uri->uri_string());
+
     } else {
-        // redirecting with no ssl.
+
+        // redirecting with no ssl cetrificate.
+
         $CI->config->config['base_url'] = str_replace('https://', 'http://', $CI->config->config['base_url']);
+
         if ($_SERVER['SERVER_PORT'] == 443) redirect($CI->uri->uri_string());
+
     }
 }
+
 </code>
-----------------------------------------------------------
+;
+------------------------------------------------
